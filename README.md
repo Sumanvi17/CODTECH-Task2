@@ -16,6 +16,9 @@ Overview of the project
 
 Project: Python program to track and manage student grades
 
+![task2-1](https://github.com/user-attachments/assets/b673867b-6605-47ad-b378-fd67afecf441)
+![task2-2](https://github.com/user-attachments/assets/81659047-ee4a-405a-a56a-5d1a5dc8969a)
+
 
 Objective
 
