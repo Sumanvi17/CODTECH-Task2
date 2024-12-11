@@ -1,0 +1,104 @@
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.grades = {}
+
+    def add_grade(self, subject, grade):
+        self.grades[subject] = grade
+
+    def calculate_average(self):
+        return sum(self.grades.values()) / len(self.grades)
+
+    def get_letter_grade(self, average):
+        if average >= 90:
+            return 'A'
+        elif average >= 80:
+            return 'B'
+        elif average >= 70:
+            return 'C'
+        elif average >= 60:
+            return 'D'
+        else:
+            return 'F'
+
+    def get_gpa(self, average):
+        if average >= 90:
+            return 9.0
+        elif average >= 85:
+            return 8.5
+        elif average >= 70:
+            return 7.0
+        elif average >= 60:
+            return 6.0
+        elif average >= 55:
+            return 5.5
+        elif average >= 47:
+            return 4.7
+        elif average >= 35:
+            return 3.4
+        else:
+            return 0.0
+
+class StudentManager:
+    def __init__(self):
+        self.students = {}
+
+    def add_student(self, name):
+        self.students[name] = Student(name)
+
+    def get_student(self, name):
+        return self.students.get(name)
+
+    def display_students(self):
+        for name in self.students:
+            print(name)
+
+def main():
+    student_manager = StudentManager()
+
+    while True:
+        print("\n1. Add student")
+        print("2. Add grade for student")
+        print("3. Calculate average for student")
+        print("4. Display students")
+        print("5. Quit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            name = input("Enter student name: ")
+            student_manager.add_student(name)
+
+        elif choice == '2':
+            name = input("Enter student name: ")
+            student = student_manager.get_student(name)
+            if student:
+                subject = input("Enter subject: ")
+                grade = float(input("Enter grade: "))
+                student.add_grade(subject, grade)
+            else:
+                print("Student not found.")
+
+        elif choice == '3':
+            name = input("Enter student name: ")
+            student = student_manager.get_student(name)
+            if student:
+                average = student.calculate_average()
+                print(f"Average grade for {name}: {average:.2f}")
+                print(f"Letter grade: {student.get_letter_grade(average)}")
+                print(f"GPA: {student.get_gpa(average):.1f}")
+            else:
+                print("Student not found.")
+
+        elif choice == '4':
+            student_manager.display_students()
+
+        elif choice == '5':
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
